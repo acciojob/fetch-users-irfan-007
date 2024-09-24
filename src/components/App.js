@@ -16,7 +16,7 @@ const App = () => {
       <h1>
         <span>Fetch Users</span>{" "}
         <button
-          id="btn"
+          className="btn"
           style={{ float: "right" }}
           onClick={() => setclicked(true)}
         >
