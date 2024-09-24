@@ -24,7 +24,12 @@ const App = () => {
         </button>
       </h1>
       <table
-        style={{ backgroundColor: "wheat", width: "100%", padding: "0.5rem" }}
+        style={{
+          backgroundColor: "wheat",
+          width: "100%",
+          padding: "0.5rem",
+          textAlign: "center",
+        }}
       >
         <thead style={{ backgroundColor: "#222", color: "white" }}>
           <tr>
@@ -35,7 +40,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {clicked &&
+          {clicked ? (
             list.map((item) => (
               <tr key={item.id}>
                 <td>{item.first_name}</td>
@@ -45,7 +50,12 @@ const App = () => {
                   <img src={item.avatar} style={{}} />
                 </td>
               </tr>
-            ))}
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4">No data found to display.</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
