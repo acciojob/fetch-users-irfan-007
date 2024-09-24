@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./../styles/App.css";
 
 const App = () => {
   const [list, setList] = useState([]);
-  const [clicked, setclicked] = useState(false);
+  // const [clicked, setclicked] = useState(false);
 
-  useEffect(() => {
+  function btnclick() {
     const data = fetch("https://reqres.in/api/users")
       .then((res) => res.json())
       .then((json) => setList(json.data));
-  }, []);
+  }
 
   return (
     <div id="main" style={{ padding: "2rem" }}>
       <h1>
         <span>Fetch Users</span>{" "}
-        <button
-          className="btn"
-          style={{ float: "right" }}
-          onClick={() => setclicked(true)}
-        >
+        <button className="btn" style={{ float: "right" }} onClick={btnclick}>
           Get User List
         </button>
       </h1>
@@ -40,7 +36,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {clicked ? (
+          {list.length > 0 ? (
             list.map((item) => (
               <tr key={item.id}>
                 <td>{item.first_name}</td>
